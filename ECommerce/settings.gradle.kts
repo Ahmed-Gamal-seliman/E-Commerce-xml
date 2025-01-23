@@ -9,7 +9,10 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+
+
     }
+
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -17,8 +20,12 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-}
 
+}
+//plugins{
+//    id("androidx.navigation.safeargs") version "2.8.5" apply false
+//}
 rootProject.name = "E-Commerce"
 include(":app")
- 
+include(":domain")
+include(":data")

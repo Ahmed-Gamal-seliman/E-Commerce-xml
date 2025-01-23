@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#004182</color>
+    <color name="grey">#80474343</color>
+    <color name="sidebar_color">#EDF1F5</color>
+    <color name="category_name_color">#06004F</color>
+    <color name="line_color">#06004F</color>
+    <color name="orange">#F4B400</color>
+    <color name="dark_orange">#FDD835</color>
 </resources>

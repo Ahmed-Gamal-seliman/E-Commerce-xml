@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/category_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circle_iv_cateogry"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:src="@drawable/category_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+
+       />
+    <TextView
+        android:id="@+id/tv_category_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="Ahmed"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/circle_iv_cateogry"
+        app:layout_constraintStart_toStartOf="@id/circle_iv_cateogry"
+        app:layout_constraintEnd_toEndOf="@id/circle_iv_cateogry"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

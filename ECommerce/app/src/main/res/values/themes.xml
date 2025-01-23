@@ -2,8 +2,20 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ECommerce" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/blue</item>
     </style>
 
     <style name="Theme.ECommerce" parent="Base.Theme.ECommerce" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/white</item>
+        <item name="android:width">40dp</item>
+        <item name="android:height">40dp</item>
+    </style>
+
+    <style name="sideBar_style">
+        <item
+            name="android:topLeftRadius">50dp</item>
+
+    </style>
 </resources>
