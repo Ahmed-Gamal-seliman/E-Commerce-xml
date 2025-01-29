@@ -7,16 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.domain.models.all_products.Product
 import com.example.domain.models.order.CartItemsItem
 import com.example.domain.models.order.DataItem
 import com.example.e_commerce.R
 import com.example.e_commerce.databinding.OrderItemBinding
+import com.example.e_commerce.products.ui.adapter.ProductAdapter.onProductClickListener
 
 class OrdersAdapter(var orderList:List<CartItemsItem?>?):RecyclerView.Adapter<OrdersAdapter.OrderViewHolder>() {
-    private lateinit var binding:OrderItemBinding
 
+    var onOrderClicked: OnOrderClickListener?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
-        binding = OrderItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = OrderItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return OrderViewHolder(binding)
     }
 
@@ -27,7 +29,7 @@ class OrdersAdapter(var orderList:List<CartItemsItem?>?):RecyclerView.Adapter<Or
 
     override fun getItemCount()= orderList?.size ?: 0
 
-    class OrderViewHolder(val bindingViewHolder:OrderItemBinding):ViewHolder(bindingViewHolder.root)
+   inner class OrderViewHolder(val bindingViewHolder:OrderItemBinding):ViewHolder(bindingViewHolder.root)
     {
         fun bind(orderItem:CartItemsItem?)
         {
@@ -47,7 +49,9 @@ class OrdersAdapter(var orderList:List<CartItemsItem?>?):RecyclerView.Adapter<Or
             bindingViewHolder.tvBrandName.text = "brand: ${orderItem?.product?.brand?.name}"
 
 
-
+            bindingViewHolder.root.setOnClickListener{
+                onOrderClicked?.onOrderClick(orderItem)
+            }
         }
     }
 
@@ -56,5 +60,9 @@ fun setData(orders:List<CartItemsItem?>?)
     orderList = orders
     notifyDataSetChanged()
 }
+
+    fun interface OnOrderClickListener{
+        fun onOrderClick(order: CartItemsItem?)
+    }
 
 }

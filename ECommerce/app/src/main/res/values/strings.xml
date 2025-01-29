@@ -12,4 +12,6 @@
     <string name="shop_now">Shop Now</string>
     <string name="categories">Categories</string>
     <string name="view_all">view all</string>
+    <string name="ok">ok</string>
+    <string name="cancel">cancel</string>
 </resources>

@@ -7,15 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.viewpager2.widget.ViewPager2
+
 import com.example.domain.models.Category
-import com.example.domain.models.all_products.Product
-import com.example.e_commerce.DestinationType
 import com.example.e_commerce.MainFragmentDirections
 
 
@@ -71,10 +68,22 @@ class HomeFragment : Fragment() {
         onGetAllProductsClicked()
         onGetAllOrdersClicked()
         onCategoryItemClicked()
+        onShoppingClicked()
+//        onSearchClicked()
 //        viewModel.getAllProducts()
 
 
 
+    }
+
+
+
+    private fun onShoppingClicked() {
+        binding.layoutHeader.ivCart.setOnClickListener{
+            Log.e("shop","clicked")
+            val action = MainFragmentDirections.actionMainFragmentToProductsFragment(null)
+            findNavController().navigate(action)
+        }
     }
 
     private fun onGetAllOrdersClicked() {

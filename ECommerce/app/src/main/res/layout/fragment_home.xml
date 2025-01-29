@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Get All Products"
+        android:text="See All Products"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintTop_toBottomOf="@id/btn_get_all_orders"
@@ -105,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Get All Orders"
+        android:text="See your Orders"
 
 
         app:layout_constraintTop_toBottomOf="@id/first_rv_categories"

@@ -1,7 +1,10 @@
 package com.example.domain.models.order
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 
+@Parcelize
 data class User(
 
 	val phone: String? = null,
@@ -11,4 +14,4 @@ data class User(
 	val id: String? = null,
 
 	val email: String? = null
-)
+):Parcelable

@@ -1,10 +1,14 @@
 package com.example.e_commerce.authentication.signin.ui
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
@@ -44,6 +48,42 @@ class SinginFragment : Fragment() {
         {user->
             navigateToHomePage(user)
         }
+        viewModel.isLoading.observe(viewLifecycleOwner)
+        {
+            isLoading->
+            showLoading(isLoading)
+
+        }
+        viewModel.error.observe(viewLifecycleOwner)
+        {
+            errorMessage->
+            showDialog(errorMessage)
+        }
+    }
+
+    private fun showDialog(errorMessage: String?) {
+
+        AlertDialog.Builder(requireActivity())
+            .setOnCancelListener{
+                it.dismiss()
+            }
+            .setPositiveButton(R.string.ok
+            ) { p1,p2->
+                p1.dismiss()
+            }
+            .setNegativeButton(R.string.cancel)
+            {
+                p1,p2->
+                p1.dismiss()
+            }
+            .setTitle(errorMessage)
+            .show()
+
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.isVisible= isLoading
+
     }
 
     private fun navigateToHomePage(user:User?) {
@@ -62,6 +102,8 @@ class SinginFragment : Fragment() {
     }
     private fun onLoginButtonClicked(){
         binding.btnLogin.setOnClickListener{
+            binding.textInputEditTextPassword.onEditorAction(EditorInfo.IME_ACTION_DONE)
+            binding.textInputEditTextUserName.onEditorAction(EditorInfo.IME_ACTION_DONE)
             viewModel.loginUser(
                 User(
                     email = binding.textInputEditTextUserName.text.toString(),

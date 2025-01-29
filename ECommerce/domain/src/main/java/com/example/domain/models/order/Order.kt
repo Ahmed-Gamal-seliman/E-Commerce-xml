@@ -1,7 +1,10 @@
 package com.example.domain.models.order
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 
+@Parcelize
 data class Order(
 
 
@@ -12,4 +15,4 @@ data class Order(
 
 
 
-)
+):Parcelable

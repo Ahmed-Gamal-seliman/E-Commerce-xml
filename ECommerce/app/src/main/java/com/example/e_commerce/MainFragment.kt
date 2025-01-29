@@ -30,19 +30,19 @@ class MainFragment : Fragment() {
     }
 
     private fun onBottomNavClicked() {
-        binding.bottomNav.setOnItemSelectedListener {
-           val fragment:Fragment=  when(it.itemId)
-            {
-                R.id.home -> HomeFragment()
-                R.id.category -> CategoriesFragment()
-                R.id.favourite -> HomeFragment()
-               else -> HomeFragment()
-
-            }
-            pushFragment(fragment)
-            true
-        }
-        binding.bottomNav.selectedItemId= R.id.home
+//        binding.bottomNav.setOnItemSelectedListener {
+//           val fragment:Fragment=  when(it.itemId)
+//            {
+//                R.id.home -> HomeFragment()
+//                R.id.category -> CategoriesFragment()
+//                R.id.favourite -> HomeFragment()
+//               else -> HomeFragment()
+//
+//            }
+            pushFragment(HomeFragment())
+//            true
+//        }
+//        binding.bottomNav.selectedItemId= R.id.home
     }
 
     private fun pushFragment(fragment:Fragment)

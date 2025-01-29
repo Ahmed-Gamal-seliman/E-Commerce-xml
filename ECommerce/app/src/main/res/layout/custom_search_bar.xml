@@ -5,15 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
-        android:id="@+id/iv_route_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/route_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
 
 
     <LinearLayout
@@ -27,25 +18,36 @@
         android:padding="15dp"
         app:layout_constraintEnd_toStartOf="@id/iv_cart"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_route_logo">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical"
-            android:layout_marginStart="10dp"
-            android:background="@null"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/search_ic" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="15dp"
-            android:background="@null"
-            android:hint="what do you search for?"
-            android:maxLines="1" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/iv_search"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center|center_vertical"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:background="@null"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:src="@drawable/search_ic" />-->
+<SearchView
+    android:id="@+id/searchView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:searchIcon="@drawable/search_ic"
+    android:queryHint="what do you search for?"
+    android:searchHintIcon="@drawable/search_ic"
+    />
+<!--        <EditText-->
+<!--            android:id="@+id/et_search"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="4dp"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:background="@null"-->
+<!--            android:hint="what do you search for?"-->
+<!--            android:maxLines="1"-->
+<!--           android:inputType="text"-->
+<!--            android:imeOptions="actionSearch"/>-->
 
     </LinearLayout>
 
@@ -56,5 +58,8 @@
         android:src="@drawable/cart_ic"
         app:layout_constraintBottom_toBottomOf="@id/search_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/search_view" />
+        app:layout_constraintTop_toTopOf="@id/search_view"
+        app:layout_constraintStart_toEndOf="@id/search_view"
+        android:layout_marginEnd="10dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,9 @@
 package com.example.domain.models.order
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Brand(
 
 	val image: String? = null,
@@ -10,4 +13,4 @@ data class Brand(
 	val id: String? = null,
 
 	val slug: String? = null
-)
+):Parcelable

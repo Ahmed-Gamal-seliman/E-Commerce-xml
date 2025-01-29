@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.domain.models.user.User
 import com.example.e_commerce.R
@@ -29,6 +31,7 @@ private val viewModel: SingupViewModel by viewModels<SingupViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeLiveData()
         binding.btnSignup.setOnClickListener{
 
             viewModel.registerUser(
@@ -42,6 +45,43 @@ private val viewModel: SingupViewModel by viewModels<SingupViewModel>()
                 )
             )
         }
+    }
+
+    private fun observeLiveData() {
+        viewModel.isLoading.observe(viewLifecycleOwner)
+        {
+            isLoading->
+            showLoading(isLoading)
+        }
+        viewModel.error.observe(viewLifecycleOwner)
+        {
+            errorMessage->
+            showDialog(errorMessage)
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.isVisible= isLoading
+    }
+
+    private fun showDialog(errorMessage: String?) {
+
+        AlertDialog.Builder(requireActivity())
+            .setOnCancelListener{
+                it.dismiss()
+            }
+            .setPositiveButton(R.string.ok
+            ) { p1,p2->
+                p1.dismiss()
+            }
+            .setNegativeButton(R.string.cancel)
+            {
+                    p1,p2->
+                p1.dismiss()
+            }
+            .setTitle(errorMessage)
+            .show()
+
     }
 
 }

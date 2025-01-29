@@ -6,7 +6,6 @@ import com.example.domain.contract.category.RegisterRepository
 import com.example.domain.models.user.User
 import kotlinx.coroutines.flow.Flow
 import utils.safeApiCall
-import javax.inject.Inject
 
 class RegisterRepositoryImpl (
     private val registerOnlineDataSource:RegisterOnlineDataSource
@@ -20,8 +19,26 @@ class RegisterRepositoryImpl (
     }
 
     override suspend fun loginUser(user: User): Flow<Resource<User>> {
-        return safeApiCall {
-            registerOnlineDataSource.loginUser(user).toUser()
+//        if(isValidInput(user)) {
+            return safeApiCall {
+                registerOnlineDataSource.loginUser(user).toUser()
+            }
+//        }
+    }
+
+    override fun isValidInput(user: User): Boolean {
+        if(validateEmail(user.email) != null){
+            return false
         }
+        return true
+    }
+
+    private fun validateEmail(email:String?):String?
+    {
+        if(email?.isEmpty() == true)
+        {
+            return "required field"
+        }
+        return null
     }
 }

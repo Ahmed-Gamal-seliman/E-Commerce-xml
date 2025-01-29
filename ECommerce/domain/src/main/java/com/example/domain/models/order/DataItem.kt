@@ -1,7 +1,11 @@
 package com.example.domain.models.order
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 
+@Parcelize
 data class DataItem(
 
 
@@ -20,7 +24,7 @@ data class DataItem(
 	val shippingPrice: Int? = null,
 
 
-	val shippingAddress: ShippingAddress? = null,
+	val shippingAddress:  @RawValue ShippingAddress? = null,
 
 
 	val taxPrice: Int? = null,
@@ -35,9 +39,9 @@ data class DataItem(
 
 	val paymentMethodType: String? = null,
 
-	val user: User? = null,
+	val user: @RawValue User? = null,
 
 	val updatedAt: String? = null,
 
 	val paidAt: String? = null
-)
+):Parcelable

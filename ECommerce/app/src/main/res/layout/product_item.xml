@@ -82,6 +82,7 @@
                 android:layout_marginStart="2dp"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 />
+
             </LinearLayout>
 
         </LinearLayout>

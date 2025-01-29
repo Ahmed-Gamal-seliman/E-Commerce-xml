@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SinginViewModel @Inject constructor(
-    private val loginUseCase:RegisterRepositoryUseCase
+    private val loginUseCase:RegisterRepositoryUseCase,
 ):ViewModel() {
     val userLive= MutableLiveData<User?>()
 
@@ -23,6 +23,7 @@ class SinginViewModel @Inject constructor(
 
     fun loginUser(user: User){
         viewModelScope.launch(Dispatchers.IO) {
+            isLoading.postValue(true)
             loginUseCase.loginUser(user)
                 .collect{resource->
 

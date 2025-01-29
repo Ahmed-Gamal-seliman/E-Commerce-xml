@@ -8,4 +8,6 @@ interface RegisterRepository {
     suspend fun registerUser(user: User): Flow<Resource<User>>
 
     suspend fun loginUser(user:User):Flow<Resource<User>>
+
+    fun isValidInput(user:User):Boolean
 }

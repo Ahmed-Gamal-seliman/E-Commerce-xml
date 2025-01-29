@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.domain.models.order.CartItemsItem
 import com.example.domain.models.order.Order
 import com.example.e_commerce.DestinationType
@@ -46,7 +47,13 @@ class OrdersFragment : Fragment() {
 
     private fun initOrderRecyclerView() {
         ordersAdapter = OrdersAdapter(emptyList())
+        ordersAdapter.onOrderClicked= OrdersAdapter.OnOrderClickListener {
+            order->
+            val action= OrdersFragmentDirections.actionOrdersFragmentToOrderDetailsFragment(order)
+            findNavController().navigate(action)
+        }
         binding.rvOrders.adapter= ordersAdapter
+
     }
 
     private fun observeLiveData() {
@@ -66,6 +73,7 @@ class OrdersFragment : Fragment() {
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             Log.e("isLoading", "${isLoading}")
             showShimmer()
+            binding.rvOrders.isVisible= false
         }
         viewModel.error.observe(viewLifecycleOwner) { errorMessage ->
             Log.e("error", "${errorMessage}")
